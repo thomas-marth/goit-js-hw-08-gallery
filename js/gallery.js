@@ -7,6 +7,8 @@ const refs = {
   closeBtn: document.querySelector('.js-button'),
 };
 
+// 1. Создаем разметку для галлереи
+
 const createGalleryItem = ({ preview, original, description }, idx) => {
   const galleryList = document.createElement('li');
   const galleryLink = document.createElement('a');
@@ -28,6 +30,8 @@ const createGalleryItem = ({ preview, original, description }, idx) => {
   return galleryList;
 };
 
+// 2. Перебираем массив изображений и аппендим в созданную ранее разметку
+
 const makeGallery = value => {
   const galleryShaker = value.map((image, idx) =>
     createGalleryItem(image, idx),
@@ -35,6 +39,11 @@ const makeGallery = value => {
   refs.gallery.append(...galleryShaker);
 };
 makeGallery(gallery);
+
+/* 3. Создаем обработчик события при клике на изображение 
+    с вызовом функции открытия модального окна и передачей в виде аргументов в другую функцию 
+    data-source и alt изображения для создания оригинального, полноразмерного изображения в модальном окне
+*/
 
 let imageIndex;
 
@@ -54,6 +63,8 @@ function originPicture(url, alt) {
   refs.originImg.src = url;
   refs.originImg.alt = alt;
 }
+
+// 4. Создаем функцию открывающую модальное окно и слушателями событий для взаимодействия с ним
 
 function handelModalOpen() {
   refs.lightBox.classList.add('is-open');
