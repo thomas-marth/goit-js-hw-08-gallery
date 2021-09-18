@@ -71,6 +71,9 @@ function handelModalOpen() {
   window.addEventListener('keydown', handelPressEsc);
   window.addEventListener('keydown', handelPressLeft);
   window.addEventListener('keydown', handelPressRight);
+  refs.closeBtn.addEventListener('click', handelModalClose);
+  refs.lightBox.addEventListener('click', handelBackdropClick);
+  refs.gallery.removeEventListener('click', handelGalleryClick);
 }
 
 function handelModalClose() {
@@ -80,6 +83,9 @@ function handelModalClose() {
   window.removeEventListener('keydown', handelPressEsc);
   window.removeEventListener('keydown', handelPressLeft);
   window.removeEventListener('keydown', handelPressRight);
+  refs.closeBtn.removeEventListener('click', handelModalClose);
+  refs.lightBox.removeEventListener('click', handelBackdropClick);
+  refs.gallery.addEventListener('click', handelGalleryClick);
 }
 
 function handelBackdropClick(event) {
@@ -111,5 +117,3 @@ function handelPressRight(event) {
 }
 
 refs.gallery.addEventListener('click', handelGalleryClick);
-refs.closeBtn.addEventListener('click', handelModalClose);
-refs.lightBox.addEventListener('click', handelBackdropClick);
