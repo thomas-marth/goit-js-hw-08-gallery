@@ -77,6 +77,9 @@ function handelModalClose() {
   refs.lightBox.classList.remove('is-open');
   refs.originImg.src = '';
   refs.originImg.alt = '';
+  window.removeEventListener('keydown', handelPressEsc);
+  window.removeEventListener('keydown', handelPressLeft);
+  window.removeEventListener('keydown', handelPressRight);
 }
 
 function handelBackdropClick(event) {
